@@ -21,18 +21,20 @@ public class PaymentWebhookController {
     @GetMapping("/publish")
     public ResponseEntity<String> sendPaymentWehbHookNotification(@RequestBody String paymentEvent){
 
-        try {
-            JsonNode rootNode = new ObjectMapper().readTree(paymentEvent);
-            String companyNumber = rootNode.path("companyNumber").asText();
-            // So we can get any value 
-            kafkaProducer.sendWebHookMessage(companyNumber);
+        kafkaProducer.sendWebHookMessage(paymentEvent);
+        return ResponseEntity.ok("Payment Event: " + paymentEvent );
 
-            return ResponseEntity.ok("companyNumber Number: " + companyNumber );
+        // try {
+        //     JsonNode rootNode = new ObjectMapper().readTree(paymentEvent);
+        //     String companyNumber = rootNode.path("companyNumber").asText();
+        //     // So we can get any value 
+        //     kafkaProducer.sendWebHookMessage(companyNumber);
 
-        } catch (Exception e) {
-            // Handle any exceptions that occur during JSON parsing
-            return ResponseEntity.badRequest().body("Error processing JSON data");
-        }
+        //     return ResponseEntity.ok("companyNumber Number: " + companyNumber );
 
+        // } catch (Exception e) {
+        //     // Handle any exceptions that occur during JSON parsing
+        //     return ResponseEntity.badRequest().body("Error processing JSON data");
+        // }
     } 
 }
