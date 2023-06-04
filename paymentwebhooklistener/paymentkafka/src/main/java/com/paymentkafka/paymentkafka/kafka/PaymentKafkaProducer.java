@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 import com.paymentkafka.paymentkafka.utils.AppConstants;
 
 @Service
-public class KafkaProducer {
+public class PaymentKafkaProducer {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaProducer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentKafkaProducer.class);
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendWebHookMessage(String message){
-        LOGGER.info(String.format("Message sent -> %s", message));
+        LOGGER.info(String.format("Message sent After Receive Payment Gateway -> %s", message));
         kafkaTemplate.send(AppConstants.TOPIC_NAME, message);
     }
 }

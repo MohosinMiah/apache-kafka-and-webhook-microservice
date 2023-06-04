@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.paymentkafka.paymentkafka.kafka.KafkaProducer;
+import com.paymentkafka.paymentkafka.kafka.PaymentKafkaProducer;
 
 @RestController
-public class PaymentWebhookController {
+public class PaymentKafkaWebhookController {
 
     @Autowired
-    private KafkaProducer kafkaProducer;
+    private PaymentKafkaProducer kafkaProducer;
 
 
     @GetMapping("/publish")
     public ResponseEntity<String> sendPaymentWehbHookNotification(@RequestBody String paymentEvent){
 
         kafkaProducer.sendWebHookMessage(paymentEvent);
-        return ResponseEntity.ok("Payment Event: " + paymentEvent );
+        return ResponseEntity.ok("Payment Event Sent After From Payment Receive webhook " + paymentEvent );
 
         // try {
         //     JsonNode rootNode = new ObjectMapper().readTree(paymentEvent);
