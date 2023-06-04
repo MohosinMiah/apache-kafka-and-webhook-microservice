@@ -11,10 +11,12 @@ import com.paymentkafka.paymentkafka.utils.AppConstants;
 public class PaymentKafKaConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentKafKaConsumer.class);
+    public static final String TOPIC_NAME = "webhook_paymentkafka";
+    public static final String GROUP_ID = "webhook_paymentkafka_payment";
 
-    // @KafkaListener(topics = AppConstants.TOPIC_NAME,
-    //                 groupId = AppConstants.GROUP_ID)
-    // public void consume(String message){
-    //     LOGGER.info(String.format("Message received from Payment Lisener -> %s", message));
-    // }
+    @KafkaListener(topics = TOPIC_NAME,
+                    groupId = GROUP_ID)
+    public void consume(String message){
+        LOGGER.info("Hi, This is FROM BD Team. This message will receive from Kafka that will send for log Storage");
+    }
 }
