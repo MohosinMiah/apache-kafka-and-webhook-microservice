@@ -6,8 +6,6 @@
 
 2) Setup Database for webhook microservice
 
-3) Setup Database
-
 4) API URL: http://localhost:8081/publish
 Body Post Request:
 
