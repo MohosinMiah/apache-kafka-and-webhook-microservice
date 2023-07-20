@@ -66,7 +66,7 @@ Body Post Request:
 </code>
 Done, 
 
-5) In the console you will see the message send and receive message. Check two console where the project is running.
+## In the console you will see the message send and receive message. Check two console where the project is running.
 
 Thanks
 
