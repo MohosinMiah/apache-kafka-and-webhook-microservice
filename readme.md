@@ -5,7 +5,7 @@
 <code>docker compose up -d</code>
 
 <small> This command will run Apache Kafka as in the root we configure Dockerfile for Kafka run in Docker </small>
-<code>
+```
 version: '3'
 services:
   zookeeper:
@@ -29,7 +29,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-</code>
+```
 
 ## Configure Payment Webhook Listner Project
 
